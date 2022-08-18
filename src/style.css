@@ -1,0 +1,161 @@
+/*------------------------FONTS-------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
+
+/*-----------------------VARIABLES---    -----------------*/
+:root {
+  --green: #00ff00;
+  --bg-op1: #0f01;
+  --bg-op3: #0f03;
+
+  --main-width: 20rem;
+  --main-height: 30rem;
+
+  --lg-width: 22rem;
+  --lg-height: 32rem;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.btn {
+  width: 80%;
+  text-align: center;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.btn:hover {
+  background-color: var(--bg-op3);
+}
+
+/*---------------------------JEU----------------------------*/
+/*Page Jeu*/
+
+.containerJeu {
+  width: var(--main-width);
+  height: var(--main-height);
+  background-image: url("img/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  /* border: 1px solid blue; */
+}
+
+.infoJeu {
+  margin: 0;
+  height: fit-content;
+  display: flex;
+  background-color: var(--bg-op3);
+}
+
+.level,
+.life {
+  margin: 0 1rem;
+}
+
+.gridJeu {
+  width: 100%;
+  height: 96%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid yellow;
+}
+
+.enemies,
+.guns {
+  border: 1px solid pink;
+}
+
+.enemies {
+  width: 100%;
+  height: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 2rem 4rem 6rem;
+  justify-content: center;
+  align-content: space-evenly;
+  gap: 0.5rem;
+}
+
+.enemy {
+  width: 100%;
+  height: 100%;
+  background-image: url("img/enemyMarching.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0;
+  transition: all ease-out 100ms;
+}
+
+.enemy.active {
+  opacity: 1;
+}
+
+.enemy.dead {
+  background-image: url("img/enemyDead.png");
+  opacity: 1;
+}
+
+
+.guns {
+  /* position: fixed;
+  bottom: 0; */
+  width: 67px;
+  height: 93px;
+}
+
+.spriteGun {
+  width: 100%;
+  height: 100%;
+  background-image: url("img/gunMedium.png");
+  background-repeat: repeat-x;
+  background-position: 0px;
+}
+
+/*Ajouter cette classe en js quand on clique*/
+.gunAnimation {
+  animation-name: spriteMove;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(4);
+}
+
+/*------------------WON AND LOSE SCREEN-----------------------------------*/
+.won,
+.lose {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  background-image: var(--bg-op1);
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: "Silkscreen", cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+/*--------------------ANIMATIONS--------------------------*/
+/*Animation pour le gun*/
+@keyframes spriteMove {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 268px;
+  }
+}
+
+/*Animation pour les morts*/
